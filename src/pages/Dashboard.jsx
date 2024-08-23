@@ -14,14 +14,14 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { useLoaderData } from "react-router-dom";
+import data from "../../data/db.json"
 
 export default function Dashboard() {
-  const data = useLoaderData();
-  console.log(data);
+  const tasks = data.tasks;
   return (
     <SimpleGrid spacing="2" minChildWidth="300px">
-      {data &&
-        data.map(({ id, title, description, author, img }) => (
+      {tasks &&
+        tasks.map(({ id, title, description, author, img }) => (
           <Card key={id} borderTop="8px" borderColor="purple.400">
             <CardHeader>
               <Box>
@@ -52,7 +52,7 @@ export default function Dashboard() {
   );
 }
 
-export const tasksLoader = async () => {
-  const res = await fetch("http://localhost:3000/tasks");
-  return res.json();
-};
+// export const tasksLoader = async () => {
+//   const res = await fetch("http://localhost:5173/tasks");
+//   return res.json();
+// };
