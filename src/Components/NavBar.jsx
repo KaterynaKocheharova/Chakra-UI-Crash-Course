@@ -6,9 +6,23 @@ import {
   Button,
   Box,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
 
 const NavBar = () => {
+  const toast = useToast();
+
+  const showToast = () => {
+    toast({
+      title: "Logged out",
+      description: "Successfully logged out",
+      duration: 5000,
+      isClosable: true,
+      status: "success",
+      position: "top",
+    });
+  };
+
   return (
     <Flex as="nav" p="10px" alignItems="center" mb="40px">
       <Heading as="h1">Dojo Tasks</Heading>
@@ -18,7 +32,9 @@ const NavBar = () => {
           M
         </Box>
         <Text>example@gmail.com</Text>
-        <Button colorScheme="purple">Logout</Button>
+        <Button colorScheme="purple" onClick={showToast}>
+          Logout
+        </Button>
       </HStack>
     </Flex>
   );

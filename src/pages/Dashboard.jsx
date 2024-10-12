@@ -12,9 +12,11 @@ import {
   SimpleGrid,
   Text,
   Divider,
+  Avatar,
+  Flex,
 } from "@chakra-ui/react";
 import { useLoaderData } from "react-router-dom";
-import data from "../../data/db.json"
+import data from "../../data/db.json";
 
 export default function Dashboard() {
   const tasks = data.tasks;
@@ -24,12 +26,15 @@ export default function Dashboard() {
         tasks.map(({ id, title, description, author, img }) => (
           <Card key={id} borderTop="8px" borderColor="purple.400">
             <CardHeader>
-              <Box>
-                <Heading as="h3" size="small">
-                  {title}
-                </Heading>
-                <Text>by {author}</Text>
-              </Box>
+              <Flex gap={5}>
+                <Avatar src={img} />
+                <Box>
+                  <Heading as="h3" size="small">
+                    {title}
+                  </Heading>
+                  <Text>by {author}</Text>
+                </Box>
+              </Flex>
             </CardHeader>
 
             <CardBody>
